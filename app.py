@@ -5,7 +5,7 @@ from flask_heroku import Heroku
 
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'localhost:3000'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'https://git.heroku.com/app4appsapi.git'
 
 
 heroku = Heroku(app)
@@ -50,5 +50,5 @@ def return_submissiondata():
 
 @app.route('/submissionsdata/<slug>', methods=['GET'])
 def return_single_sumbissiondata(slug):
-    single_submissiondata = db.session.querySubmissionData.id, SubmissionData.name, SubmissionData.state, SubmissionData.description).filter(SubmissionData.name == slug).first()
+    single_submissiondata = db.session.query(SubmissionData.id, SubmissionData.name, SubmissionData.state, SubmissionData.description).filter(SubmissionData.name == slug).first()
     return jsonify(single_relic)
