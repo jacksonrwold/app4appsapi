@@ -42,3 +42,13 @@ def dinosaur_input():
         db.session.commit()
         return jsonify("Submission Data Posted")
     return jsonify("Failed to post Submission Data")    
+
+@app.route('/submissionsdata', methods=['GET'])
+def return_submissiondata():
+    all_dinosaurs = db.session.query(SubmissionData.id, SubmissionData.name, SubmissionData.state, SubmissionData.description).all()
+    return jsonify(all_dinosaurs)
+
+@app.route('/submissionsdata/<slug>', methods=['GET'])
+def return_single_sumbissiondata(slug):
+    single_submissiondata = db.session.querySubmissionData.id, SubmissionData.name, SubmissionData.state, SubmissionData.description).filter(SubmissionData.name == slug).first()
+    return jsonify(single_relic)
