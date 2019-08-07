@@ -31,7 +31,7 @@ class SubmissionData(db.Model):
 def home():
     return '<h1>Hi from the App4Apps API</h1>'
 
-@app.route('/submissionsdata/input', methods=['POST'])
+@app.route('/submissiondata/input', methods=['POST'])
 def dinosaur_input():
     if request.content_type == 'application/json':
         post_data = request.get_json()
@@ -44,17 +44,17 @@ def dinosaur_input():
         return jsonify("Submission Data Posted")
     return jsonify("Failed to post Submission Data")    
 
-@app.route('/submissionsdata', methods=['GET'])
+@app.route('/submissiondata', methods=['GET'])
 def return_submissiondata():
     all_dinosaurs = db.session.query(SubmissionData.id, SubmissionData.name, SubmissionData.state, SubmissionData.description).all()
     return jsonify(all_dinosaurs)
 
-@app.route('/submissionsdata/<slug>', methods=['GET'])
+@app.route('/submissiondata/<slug>', methods=['GET'])
 def return_single_sumbissiondata(slug):
     single_submissiondata = db.session.query(SubmissionData.id, SubmissionData.name, SubmissionData.state, SubmissionData.description).filter(SubmissionData.name == slug).first()
     return jsonify(single_relic)
 
-@app.route('/submissionsdata/<id>', methods=['DELETE'])
+@app.route('/submissiondata/<id>', methods=['DELETE'])
 def delete_submissiondata(id):
     if request.content_type == 'application/json':
         record = db.session.query(SubmissionData).get(id)
@@ -63,7 +63,7 @@ def delete_submissiondata(id):
         return jsonify("Successfully deleted the suggestion")
     return jsonify("Failed to delete the suggestion")
 
-@app.route('/submissionsdata/<id>', methods=['PUT'])
+@app.route('/submissiondata/<id>', methods=['PUT'])
 def update_submissiondata(id):
     if request.content_type == 'application/json':
         name = put_data.get('name')
