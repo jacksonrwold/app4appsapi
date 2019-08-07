@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS 
-from flask_heroku import Heroku
+from flask-sqlalchemy import SQLAlchemy
+from flask-cors import CORS 
+from flask-heroku import Heroku
 
 app = Flask(__name__)
 CORS(app)
