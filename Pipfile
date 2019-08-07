@@ -11,7 +11,7 @@ gunicorn = "*"
 flask-heroku = "*"
 flask-cors = "*"
 psycopg2 = "*"
-sqlalchemy = "*"
+flask-sqlalchemy = "*"
 
 [requires]
 python_version = "3.7"
